@@ -11,7 +11,7 @@ import {
 import React, { useState, useContext } from 'react'
 import COLORS from '../conts/colors'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import { EventRegister } from 'react-native-event-listeners';
 import themeContext from '../theam/themeContext';
@@ -107,17 +107,17 @@ export default function SettingScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       <Text style={[styles.txtContact, {color:theme.color}]}>Contact us :</Text>
-      <View style={{ flexDirection: 'row', marginHorizontal: 100 }}>
-        <Entypo name="mail" size={24} color={theme.color} />
-        <Text style={{color:theme.color}}>   tanapumin.b@ku.th</Text>
+      <View style={{ flexDirection: 'row', marginHorizontal: 85 }}>
+        <FontAwesome name="user-circle" size={24} color={theme.color} />
+        <Text style={{color:theme.color}}>   ธนภูมินทร์ บุญุบุตร 6321602604</Text>
       </View>
-      <View style={{ flexDirection: 'row', marginHorizontal: 100 }}>
-        <Entypo name="mail" size={24} color={theme.color} />
-        <Text style={{color:theme.color}}>   waraluck.s@ku.th</Text>
+      <View style={{ flexDirection: 'row', marginHorizontal: 85 }}>
+        <FontAwesome name="user-circle" size={24} color={theme.color} />
+        <Text style={{color:theme.color}}>   วราลักษณ์ เสาวปิตุกุล 6321600172</Text>
       </View>
-      <View style={{ flexDirection: 'row', marginHorizontal: 100 }}>
-        <Entypo name="mail" size={24} color={theme.color} />
-        <Text style={{color:theme.color}}>   chanathip.suk@ku.th</Text>
+      <View style={{ flexDirection: 'row', marginHorizontal: 85 }}>
+        <FontAwesome name="user-circle" size={24} color={theme.color} />
+        <Text style={{color:theme.color}}>   ชนาธิป สุขศรี 6321602566</Text>
       </View>
     </View>
 

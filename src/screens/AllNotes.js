@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useFocusEffect } from "@react-navigation/native"
 // import { Divider, List, ListItem, Text } from "@ui-kitten/components"
 import React, { useState, useContext } from "react"
-import { StyleSheet, View, Divider, Modal, Text, FlatList, SafeAreaView, TouchableOpacity, TextInput, Button,ScrollView } from "react-native"
+import { StyleSheet, View, Divider, Modal, Text, FlatList, SafeAreaView, TouchableOpacity, TextInput, Button, Alert } from "react-native"
 import COLORS from "../conts/colors"
 import { AntDesign } from '@expo/vector-icons';
 import themeContext from '../theam/themeContext';
@@ -39,6 +39,10 @@ export default function AllNotes({ navigation }) {
 		handleEditItem(editItem)
 		setIsModalVisible(false)
 	}
+	const hideModal = () => {
+		setIsModalVisible(false)
+
+	}
 
 	//
 
@@ -54,9 +58,11 @@ export default function AllNotes({ navigation }) {
 		})
 	}
 	const deleteNote = async () => {
-		const newNotes = notes.filter((note) => note !== inputText )
-		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate('AllNotes'))
-		// navigation.navigate('AllNotes')
+		const newNotes = notes.filter((item) => item !== inputText)
+		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes))//.then(() => navigation.navigate('AllNotes'))
+		Alert.alert('Delete success')
+		return navigation.navigate('Notes')
+
 	}
 
 	const ListItem = ({ notes }) => {
@@ -91,23 +97,26 @@ export default function AllNotes({ navigation }) {
 			>
 				<View style={[styles.modalView, { backgroundColor: theme.background }]}>
 					<View style={styles.modalContent}>
-					<Text style={styles.textTitle}>Note : </Text>
-					<TextInput
-						style={styles.textInput}
-						onChangeText={(text) => setInputText(text)}
-						defaultValue={inputText}
-						editable={true}
-						multiline={true}
-						maxLength={100}
-					/>
-					<View style={{flexDirection:"row"}}>
-						<View style={styles.button}>
-							<Button title="Edit" onPress={onPressSaveEdit} color='green' />
+						<Text style={styles.textTitle}>Note : </Text>
+						<TextInput
+							style={styles.textInput}
+							onChangeText={(text) => setInputText(text)}
+							defaultValue={inputText}
+							editable={true}
+							multiline={true}
+							maxLength={100}
+						/>
+						<View style={{ flexDirection: "row" }}>
+							<View style={styles.button}>
+								<Button title="Edit" onPress={onPressSaveEdit} color='green' />
+							</View>
+							<View style={styles.button}>
+								<Button title="Delete" onPress={deleteNote} color='red' />
+							</View>
 						</View>
-						<View style={styles.button}>
-							<Button title="Delete" onPress={deleteNote} color='red' />
+						<View style={{width: 80, marginBottom: 20}}>
+							<Button title="OK" onPress={hideModal} />
 						</View>
-					</View>
 					</View>
 				</View>
 			</Modal>

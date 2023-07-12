@@ -12,7 +12,7 @@ export default function CreateNote({navigation}) {
 		const value = await AsyncStorage.getItem("NOTES")
 		const n = value ? JSON.parse(value) : []
 		n.push(note)
-		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate('AllNotes'))
+		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate('Notes'))
 		setNote("")
 	}
 	

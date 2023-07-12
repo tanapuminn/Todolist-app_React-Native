@@ -7,7 +7,6 @@ import SettingScreen from '../screens/SettingScreen';
 import CreateNote from '../screens/CreateNote';
 import AllNotes from '../screens/AllNotes';
 import ChecklistScreen from '../screens/ChecklistScreen';
-import NoteDetail from '../screens/NoteDetail';
 
 const Tab = createBottomTabNavigator();
 
